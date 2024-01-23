@@ -21,6 +21,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block
 }
 
+::selection {
+    /* Change highlight background color to black */
+    background: #00b100;
+    /* Change highlight text color to red */
+    color: #ffffff;
+}
+
 audio, canvas, progress, video {
     display: inline-block;
     vertical-align: baseline
@@ -272,7 +279,7 @@ html {
 
 body {
     font-family: Roboto Mono, Helvetica, Arial, sans-serif;
-    font-size: 11px;
+    font-size: 14px;
     line-height: 1.78;
     color: #000;
     background-color: #fff
