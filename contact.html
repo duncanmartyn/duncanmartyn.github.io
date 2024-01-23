@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+ 
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+
+  <title>Contact | Duncan Martyn</title>  
+
+<link href="./main.3f6952e4.css" rel="stylesheet"></head>
+
+<body class="">
+<div id="site-border-left"></div>
+<div id="site-border-right"></div>
+<div id="site-border-top"></div>
+<div id="site-border-bottom"></div>
+ <!-- Add your content of header -->
+<header>
+  <nav class="navbar  navbar-fixed-top navbar-default">
+    <div class="container">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav ">
+          <li><a href="./index.html" title="">Home</a></li>
+          <li><a href="./portfolio.html" title="">Portfolio</a></li>
+          <li><a href="./about.html" title="">About</a></li>
+          <li><a href="./contact.html" title="">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<div class="section-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="section-container-spacer text-center">
+          <h1 class="h2">Contact</h1>
+        </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <form name="gform" id="gform" class="reveal-content" action="https://docs.google.com/forms/d/e/1FAIpQLSc9M89n_LGvXuKg9MdU86uZdans-UprR6JZI-h9jlMtBuTqsg/formResponse?" target="hidden_iframe">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input type="email" class="form-control" name="entry.112778320" id="entry.112778320" placeholder="Email" required=true oninput="validateEmail(this)">
+                    <div class="custom-error" id="emailError"></div>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="entry.1274568733" id="entry.1274568733" placeholder="Subject" required=true oninput="validateText(this)">
+                    <div class="custom-error" id="subjectError"></div>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5" name="entry.326985348" id="entry.326985348" placeholder="Message" required=true oninput="validateText(this)"></textarea>
+                    <div class="custom-error" id="messageError"></div>
+                  </div>
+                  <button type="submit" id="submit_btn" class="btn btn-default btn-lg">Submit</button>
+                </div>
+            </form>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+            <div class="col-md-5 address-container">
+              <ul class="list-unstyled">
+                <li>
+                  <span class="fa-icon">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                  </span>
+                  +44 7557 887018
+                </li>
+                <li>
+                  <span class="fa-icon">
+                    <i class="fa fa-at" aria-hidden="true"></i>
+                  </span>
+                  <a href="mailto:duncan.martyn@hotmail.co.uk?subject=Portfolio Enquiry" style="color: black;">duncan.martyn@hotmail.co.uk</a>
+                </li>
+                <li>
+                  <span class="fa-icon">
+                    <i class="fa fa fa-map-marker" aria-hidden="true"></i>
+                  </span>
+                  Exeter, Devon, United Kingdom
+                </li>
+              </ul>
+              <h3>Social</h3>
+              <!-- <a href="http://www.facebook.com" title="" class="fa-icon">
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="http://www.twitter.com" title="" class="fa-icon">
+                <i class="fa fa-twitter"></i>
+              </a> -->
+              <a href="http://www.linkedin.com" title="" class="fa-icon">
+                <i class="fa fa-linkedin"></i>
+              </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-container text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>© DUNCAN MARTYN, 2024</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    navActivePage()
+  });
+
+  function validateEmail(emailInput) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+    const isValid = emailRegex.test(emailInput.value)
+    displayError(emailInput, isValid)
+    return isValid
+  }
+
+  function validateText(textInput) {
+    const isValid = textInput.value.trim().length > 0
+    displayError(textInput, isValid)
+    return isValid
+  }
+
+  function displayError(inputElement, errorStatus){
+    const lowerPlaceholder = inputElement.placeholder.toLowerCase()
+    const errorElement = document.getElementById(`${lowerPlaceholder}Error`)
+    if (!errorStatus) {
+      errorElement.innerHTML = `Please enter a valid ${inputElement.placeholder}.`
+    } else {
+      errorElement.innerHTML = ''
+    }
+  }
+</script>
+
+--> <script type="text/javascript" src="./main.70a66962.js"></script></body>
+
+</html>

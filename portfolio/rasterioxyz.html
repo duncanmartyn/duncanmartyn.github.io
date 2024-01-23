@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-icon-180x180.png">
+  <link href="./assets/favicon.ico" rel="icon">
+
+  <title>rasterioxyz | Duncan Martyn</title>  
+
+<link href="../main.3f6952e4.css" rel="stylesheet"></head>
+
+<body class="">
+<div id="site-border-left"></div>
+<div id="site-border-right"></div>
+<div id="site-border-top"></div>
+<div id="site-border-bottom"></div>
+<!-- Add your content of header -->
+<header>
+  <nav class="navbar  navbar-fixed-top navbar-default">
+    <div class="container">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav ">
+          <li><a href="../index.html" title="">Home</a></li>
+          <li><a href="../portfolio.html" title="">Portfolio</a></li>
+          <li><a href="../about.html" title="">About</a></li>
+          <li><a href="../contact.html" title="">Contact</a></li>
+        </ul>
+      </div> 
+    </div>
+  </nav>
+</header>
+<div class="section-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <img src="../assets/images/rasterioxyz_method_1.png" class="img-responsive" alt="">
+        <div class="card-container">
+          <div class="text-center">
+            <h1 class="h2">rasterioxyz</h1>
+          </div>
+          <p>
+            In my previous role, we regularly dealt with large swathes of commercial very-high-resolution (VHR) satellite and aerial imagery. 
+            Not only was this data required by in-house imagery analysts for property damage assessment but for display on the client-facing 
+            insurance exposure and claims platform. Such imagery was typically divided into constituent tiles, significant in total volume, 
+            in less common format (e.g., .tif and .tfw, MrSID), and projected in a local CRS (e.g., UTM zones). With this in mind, the third-party 
+            mapping service employed by the company - where a majority of client-facing data was hosted - impose several constraints on the data 
+            uploaded to their platform:
+            <ul>
+              <li>Must be byte (uint8) data type</li>
+              <li>Must be GeoTIFF format</li>
+              <li>Must be projected in either EPSG:3857 or EPSG:4326, though data projected in the latter is reprojected on the service-side</li>
+              <li>Must be less than 300 MB when uploaded through the web platform or 10 GB through the API</li>
+              <li>Must upload and process within a one hour timeout when uploaded through the web platform</li>
+              <li>Must be uploaded as a whole and cannot be appended to an existing dataset</li>
+              <li>Lengthy processing on the service-side comprising tiling of data into a proprietary format</li>
+              <li>Often longer than expected upload times, especially through the API where large datasets appeared to stall</li>
+              <li>Hosting costs, albeit with a generous free tier</li>
+            </ul> 
+            These combined necessitated identification of a fast, inexpensive alternative. Despite having used XYZ tiles through the entirety 
+            of my career thus far, as well as much of my geospatial education, it was discovery of the simplicity in serving these from cloud 
+            storage that they became the clear choice.
+            <br><br>
+            In practice, these were generated within QGIS, written to local storage, then uploaded to Azure Blob Storage via the Azure SDK 
+            for Python, AzCopy, or Azure Storage Explorer. While largely fire-and-forget tasks, this workflow required manual intervention between
+            steps. Furthermore, with larger datasets, QGIS' CPU and memory use during tiling often made the machine on which it was running near unusable.
+            <br><br>
+            Inspired by a need to automate the tiling of commercial high-resolution satellite and aerial imagery, rasterioxyz is a 
+            lightweight, low-dependency Python package for tiling georeferenced rasterio datasets according to the XYZ tiles standard.
+            Most, if not all, geospatial professionals will have used XYZ tiles at some point, be it OpenStreetMap or Google Satellite.
+            Many of these may have created their own XYZ dataset(s) at another. It is my hope that this package may be of use to those
+            seeking a clean, efficient, and easily integrated way to do so in their own applications.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-8 col-md-offset-2 section-container-spacer">
+        <div class="text-center">
+          <h3>Comparisons</h1>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/s2t17rlk_venice_municipal_airport.png" class="img-responsive" alt="">
+            <p>Source image</p>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/s2t17rlk_venice_municipal_airport_osm_overlay.png" class="img-responsive" alt="">
+            <p>Source image, OpenStreetMap overlay</p>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/qgis_venice_municipal_airport.png" class="img-responsive" alt="">
+            <p>QGIS zoom level 12</p>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/qgis_venice_municipal_airport_osm_overlay.png" class="img-responsive" alt="">
+            <p>QGIS zoom level 12, OpenStreetMap overlay</p>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/rasterioxyz_venice_municipal_airport.png" class="img-responsive" alt="">
+            <p>rasterioxyz zoom level 12</p>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <img src="../assets/images/rasterioxyz_venice_municipal_airport_osm_overlay.png" class="img-responsive" alt="">
+            <p>rasterioxyz zoom level 12, OpenStreetMap overlay</p>
+          </div>
+        </div>
+        <br>
+        <p>
+          While, at present, several times slower than QGIS' equivalent functionality, rasterioxyz utilises just one thread compared
+          to QGIS' 16 in testing on the same machine.
+          <br><br>
+          <div class="text-center">
+            
+            <a href="https://github.com/duncanmartyn/rasterioxyz" target="_blank" class="btn btn-default btn-lg"><i class="fa-brands fa-github"></i> GitHub repository</a>
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer-container text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>© DUNCAN MARTYN, 2024</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     navActivePage();
+  });
+</script>
+--> <script type="text/javascript" src="../main.70a66962.js"></script></body>
+
+</html>
