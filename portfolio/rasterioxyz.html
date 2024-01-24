@@ -14,11 +14,11 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-icon-180x180.png">
-  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../assets/favicon_io/favicon.ico">
 
   <title>rasterioxyz | Duncan Martyn</title>  
 
-<link href="../main.3f6952e4.css" rel="stylesheet"></head>
+<link href="../css/main.3f6952e4.css" rel="stylesheet"></head>
 
 <body class="">
 <div id="site-border-left"></div>
@@ -88,26 +88,33 @@
             Many of these may have created their own XYZ dataset(s) at another. It is my hope that this package may be of use to those
             seeking a clean, efficient, and easily integrated way to do so in their own applications.
           </p>
+          <br>
+          <div class="text-center">
+            <h3>Design</h1>
+          </div>
+          <p>
+            While reprojecting the entire source image at the maximum resolution required, thereof dictated by the maximum zoom level 
+            specified, would result in faster tiling, this represents a considerable potential source of memory issues. Such an approach 
+            would preclude the tiling of large images, be they large due to spatial resolution, data type, number of bands, and/or area 
+            covered. By lazily reading and, if needed, reprojecting windows of the source dataset at a given tile's resolution, memory 
+            use is kept low.
+            <br>
+            Data of all projections and data types can be tiled with no alterations made to the original.
+          </p>
+          <br>
+          <div class="text-center">
+            <h3>Comparisons</h1>
+          </div>
+          <p>
+            This comparison employs the same Sentinel-2 L2A tile (T17RLK) for an area of western Florida and the Gulf of Mexico, shortly after
+            the passage of Hurricane Ian. Natively projected in EPSG:32617 (WGS 84 / UTM zone 17N), QGIS' on-the-fly projection could be 
+            advantageous regarding tiling speed. However, as can be seen in the below images, QGIS-generated tiles introduce not insignificant 
+            shifting in pixel locations and artefacts from resampling.
+          </p>
         </div>
       </div>
 
       <div class="col-md-8 col-md-offset-2 section-container-spacer">
-        <div class="text-center">
-          <h3>Design</h1>
-        </div>
-        <p>
-          While reprojecting the entire source image at the maximum resolution required, thereof dictated by the maximum zoom level 
-          specified, would result in faster tiling, this represents a considerable potential source of memory issues. Such an approach 
-          would preclude the tiling of large images, be they large due to spatial resolution, data type, number of bands, and/or area 
-          covered. By lazily reading and, if needed, reprojecting windows of the source dataset at a given tile's resolution, memory 
-          use is kept low.
-          <br>
-          Data of all projections and data types can be tiled with no alterations made to the original.
-        </p>
-        <br>
-        <div class="text-center">
-          <h3>Comparisons</h1>
-        </div>
         <div class="row">
           <div class="col-xs-12 col-md-6">
             <img src="../assets/images/s2t17rlk_venice_municipal_airport.png" class="img-responsive" alt="">
@@ -136,11 +143,6 @@
         </div>
         <br>
         <p>
-          This comparison employs the same Sentinel-2 L2A tile (T17RLK) for an area of western Florida and the Gulf of Mexico, shortly after
-          the passage of Hurricane Ian. Natively projected in EPSG:32617 (WGS 84 / UTM zone 17N), QGIS' on-the-fly projection could be 
-          advantageous regarding tiling speed. However, as can be seen in the above images, QGIS-generated tiles introduce not insignificant 
-          shifting in pixel locations and artefacts from resampling.
-          <br><br>
           While - at present - rasterioxyz is several times slower than QGIS' equivalent functionality, rasterioxyz utilises just one thread 
           compared to QGIS' 16 in testing on the same machine. Investigation of threads' effectiveness in rasterioxyz's reprojection and 
           writing functionality is high priority.
@@ -187,6 +189,6 @@
      navActivePage();
   });
 </script>
---> <script type="text/javascript" src="../main.70a66962.js"></script></body>
+--> <script type="text/javascript" src="../js/main.70a66962.js"></script></body>
 
 </html>
